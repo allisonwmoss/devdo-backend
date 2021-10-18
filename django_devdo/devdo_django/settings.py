@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'devdo',
     'taggit',
     'corsheaders',
-    'rest_framework'
+    'rest_framework',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,5 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+LOGIN_REDIRECT_URL = '/'
