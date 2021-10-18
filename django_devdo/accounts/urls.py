@@ -12,5 +12,5 @@ urlpatterns = [
          auth_views.LogoutView.as_view(template_name='accounts/logout.html'),
          name='logout'),
     # Sign Up
-    +    path('accounts/signup', views.sign_up, name="signup"),
+    path('accounts/signup', views.sign_up, name="signup"),
 ]
