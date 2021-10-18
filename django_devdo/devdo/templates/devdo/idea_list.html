@@ -1,0 +1,8 @@
+<h2>Ideas <a href="{% url 'idea_create' %}">(+)</a></h2>
+<ul>
+    {% for idea in ideas %}
+    <li>
+        <a href="{% url 'idea_detail' pk=idea.pk %}">{{ idea.title }}</a>
+    </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,4 @@
+<h2>{{ idea.title }} <a href="{% url 'idea_edit' pk=idea.pk %}">(edit)</a></h2>
+<a href="{% url 'idea_delete' pk=idea.pk %}">Delete</a>
+
+<h3>tags <a href="{% url 'idea_create' %}">(+)</a></h3>
