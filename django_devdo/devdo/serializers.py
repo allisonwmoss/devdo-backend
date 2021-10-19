@@ -1,14 +1,12 @@
 from rest_framework import serializers
+from taggit.serializers import (TagListSerializerField, TaggitSerializer)
 from .models import Idea
 
 
-class IdeaSerializer(serializers.HyperlinkedModelSerializer):
-    ideas = serializers.HyperlinkedRelatedField(
-        view_name='idea_detail',
-        many=True,
-        read_only=True
-    )
+class IdeaSerializer(serializers.ModelSerializer, TaggitSerializer):
 
     class Meta:
+        tags = TagListSerializerField()
         model = Idea
-        fields = ('id', 'title', 'posted', 'tags')
+        fields = ('id', 'title', 'posted',
+                  'poster', 'in_progress', 'complete')
