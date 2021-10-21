@@ -30,10 +30,14 @@
 from django.conf.urls import include
 from django.urls import path
 from django.contrib import admin
+from . import views
 
 urlpatterns = [
     path('admin', admin.site.urls),
+    # path('csrf/', views.csrf),
+    # path('ping/', views.ping),
     path('', include('devdo.urls')),
     # path('api-auth', include('rest_framework.urls', namespace='rest_framework')),
     path('api-auth/', include('accounts.urls'))
+
 ]

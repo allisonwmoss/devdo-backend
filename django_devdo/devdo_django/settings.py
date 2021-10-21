@@ -151,17 +151,28 @@ REST_FRAMEWORK = {
 
 LOGIN_REDIRECT_URL = '/ideas'
 
-ALLOWED_HOSTS = ['*']
-CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = False
+# ALLOWED_HOSTS = ['*']
+# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+# ACCESS_CONTROL_ALLOW_CREDENTIALS = True
 
-# CORS_ORIGIN_WHITELIST = (
-#     'http://localhost:3000',
-#     'https://localhost:3000',
-#     'http://*.localhost:3000',
-#     'https://*.localhost:3000'
-#     # 'http://localhost:8000'
-# )
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:3000',
+    'https://localhost:3000',
+    'http://*.localhost:3000',
+    'https://*.localhost:3000'
+    # 'http://localhost:8000'
+)
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+AUTHENTICATION_BACKENDS = ("django.contrib.auth.backends.ModelBackend",    "allauth.account.auth_backends.AuthenticationBackend",
+                           )
+SITE_ID = 1
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_SESSION_REMEMBER = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_UNIQUE_EMAIL = True
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 AUTHENTICATION_BACKENDS = ("django.contrib.auth.backends.ModelBackend",    "allauth.account.auth_backends.AuthenticationBackend",
@@ -173,12 +184,12 @@ ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-AUTHENTICATION_BACKENDS = ("django.contrib.auth.backends.ModelBackend",    "allauth.account.auth_backends.AuthenticationBackend",
-                           )
-SITE_ID = 1
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_SESSION_REMEMBER = True
-ACCOUNT_AUTHENTICATION_METHOD = 'email'
-ACCOUNT_UNIQUE_EMAIL = True
+# CSRF_TRUSTED_ORIGINS = ['localhost:3000']
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication'
+    ]
+}

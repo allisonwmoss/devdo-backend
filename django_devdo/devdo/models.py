@@ -10,9 +10,9 @@ class Idea(models.Model):
     tags = TaggableManager()
     user_story = models.CharField(max_length=250)
     poster = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="poster")
+        'auth.User', on_delete=models.CASCADE, related_name="posts", null=True, blank=True)
     dev = models.ForeignKey(User, null=True, blank=True,
-                            on_delete=models.CASCADE, related_name="dev")
+                            on_delete=models.CASCADE, related_name="working_on")
     in_progress = models.BooleanField(default=False)
     complete = models.BooleanField(default=False)
 
