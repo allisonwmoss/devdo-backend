@@ -1,0 +1,7 @@
+FOOTNOTES
+
+1. These articles by Tarric Sookdeo were instrumental in understanding and developing the user authentication/login/signup connection between Django and React. Much of the code in the Login, Signup, and SignIn components was modeled after the code in these articles. https://blog.devgenius.io/django-react-authentication-part-1-d351726b284d https://blog.devgenius.io/django-react-authentication-part-2-ea626688165e
+
+2. This article by George Anderson was extremely helpful in understanding how to build and connect a full CRUD React/Django app: https://www.genuitec.com/how-to-build-crud-application-using-react-and-django/
+
+3. This article by Kate Bartolo was important in understanding how to connect the currently logged in user to the posts they create: https://blog.logrocket.com/use-django-rest-framework-to-build-a-blog/
