@@ -6,4 +6,4 @@ class IdeaForm(forms.ModelForm):
 
     class Meta:
         model = Idea
-        fields = ('title', 'tags')
+        fields = '__all__'

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from taggit.serializers import (TagListSerializerField, TaggitSerializer)
-from .models import Idea
+from .models import Idea, Tag
 from django.contrib.auth.models import User
 
 
@@ -33,4 +33,12 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
+        fields = '__all__'
+
+
+class TagSerializer(serializers.ModelSerializer):
+    ideas = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+
+    class Meta:
+        model = Tag
         fields = '__all__'
