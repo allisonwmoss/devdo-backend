@@ -13,6 +13,7 @@ class IdeaSerializer(serializers.ModelSerializer, TaggitSerializer):
     # )
     # poster = serializers.HiddenField(default=serializers.CurrentUserDefault())
     poster = serializers.ReadOnlyField(source='poster.username')
+    poster_email = serializers.ReadOnlyField(source='poster.email')
     # dev = serializers.SlugRelatedField(
     #     many=False,
     #     read_only=True,
