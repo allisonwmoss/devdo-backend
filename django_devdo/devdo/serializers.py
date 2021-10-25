@@ -1,25 +1,15 @@
 from rest_framework import serializers
 from taggit.serializers import (TagListSerializerField, TaggitSerializer)
-from .models import Idea, Tag
+from .models import Idea, Tag, Comment
 from django.contrib.auth.models import User
 
 
 class IdeaSerializer(serializers.ModelSerializer, TaggitSerializer):
     tags = TagListSerializerField()
-    # poster = serializers.SlugRelatedField(
-    #     many=False,
-    #     read_only=True,
-    #     slug_field='username'
-    # )
-    # poster = serializers.HiddenField(default=serializers.CurrentUserDefault())
     poster = serializers.ReadOnlyField(source='poster.username')
     poster_email = serializers.ReadOnlyField(source='poster.email')
-    # dev = serializers.SlugRelatedField(
-    #     many=False,
-    #     read_only=True,
-    #     slug_field='username'
-    # )
     dev = serializers.ReadOnlyField(source='dev.username')
+    comments = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Idea
@@ -39,7 +29,15 @@ class UserSerializer(serializers.ModelSerializer):
 
 class TagSerializer(serializers.ModelSerializer):
     ideas = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
+    comments = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Tag
         fields = '__all__'
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    poster = serializers.ReadOnlyField(source='poster.username')
+
+    class Meta:
+        model = Comment

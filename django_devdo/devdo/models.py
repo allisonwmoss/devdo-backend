@@ -26,3 +26,15 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Comment(models.Model):
+    posted = models.DateTimeField(auto_now_add=True)
+    body = models.TextField(blank=False)
+    poster = models.ForeignKey(
+        'auth.User', related_name='comments', on_delete=models.CASCADE)
+    idea = models.ForeignKey(
+        'Idea', related_name='comments', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return (self.body)
